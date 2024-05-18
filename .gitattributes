@@ -1,0 +1,5 @@
+# Auto convert unless specified
+* text=auto
+
+# LF
+*.sh text eol=lf
