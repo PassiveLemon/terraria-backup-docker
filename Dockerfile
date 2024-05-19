@@ -11,7 +11,8 @@ RUN chmod -R 755 /opt/terraria-backup/ &&\
 
 WORKDIR /opt/terraria-backup/
 
-ENV CRONTIME="0 */2 * * *"
+ENV CRONTIME="0 1 * * *"
 ENV METHOD="cp"
+ENV ROTATIONS="5"
 
 ENTRYPOINT ["/opt/terraria-backup/entrypoint.sh"]
