@@ -1,8 +1,5 @@
 # [terraria-backup-docker](https://github.com/PassiveLemon/terraria-backup-docker) </br>
 
-# WIP
-Not currently functional.
-
 Side-car Docker container to backup [terraria-docker](https://github.com/PassiveLemon/terraria-docker) or [tmodloader1.4-docker](https://github.com/PassiveLemon/tmodloader1.4-docker).
 
 > [!WARNING]
