@@ -1,0 +1,24 @@
+name: Update Description
+
+on:
+  push:
+    branches:
+      - "*"
+    paths:
+      - README.md
+
+jobs:
+  docker-description:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Docker Hub Description
+        uses: peter-evans/dockerhub-description@v3
+        with:
+          username: passivelemon
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: passivelemon/terraria-backup-docker
+          short-description: ${{ github.event.repository.description }}
+
