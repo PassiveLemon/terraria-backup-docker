@@ -14,7 +14,7 @@ Side-car Docker container to backup [terraria-docker](https://github.com/Passive
   - `docker run -d --name terraria-backup -v /opt/TerrariaServer/Worlds/:/opt/terraria-backup/worlds/ passivelemon/terraria-backup-docker:latest`
 
 # 1. Setting up the container
-This will loop over all worldnames in the world directory and back up each world file associated with that worldname, including Terraria world backup files (worldname.wld.bak).
+This will loop over all worldnames in the world directory and back up the world files associated with that name.
 
 ## Environment variables
 | Variable | Options | Default | Details |
