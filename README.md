@@ -10,10 +10,10 @@ Side-car Docker container to backup [terraria-docker](https://github.com/Passive
 
 # Quick setup
 1. Mount your Terraria world directory.
-2. Run the container:
+2. Run the container: <b>(Make sure to modify any values that you need.)</b>
   - `docker run -d --name terraria-backup -v /opt/TerrariaServer/Worlds/:/opt/terraria-backup/worlds/ passivelemon/terraria-backup-docker:latest`
 
-# 1. Setting up the container
+# Setting up the container
 This will loop over all worldnames in the world directory and back up the world files associated with that name. The backups are placed in a Backups subdirectory in the same directory as the world files.
 
 ## Environment variables
@@ -30,3 +30,39 @@ This will loop over all worldnames in the world directory and back up the world 
 `tar` | Archive (with gzip) to backup location.
 `zip` | Zip to backup location.
 `7zip` | 7Zip to backup location.
+
+### Docker run </br>
+```
+docker run -d --name (container name) -v (worlds directory):/opt/terraria-backup/config/ passivelemon/terraria-backup-docker:latest
+```
+
+### Docker Compose
+```yml
+version: '3.3'
+services:
+  terraria-backup-docker:
+    image: passivelemon/terraria-backup-docker:latest
+    container_name: terraria-backup-docker
+    volumes:
+      - (worlds directory):/opt/terraria-backup/worlds/
+```
+
+## Examples </br>
+### Docker run
+```
+docker run -d --name terraria-backup-docker -v /opt/terrariaServer/Worlds/:/opt/terraria-backup/config/ -e METHOD="tar" -e STARTTRIGGER="1" passivelemon/terraria-backup-docker:latest
+```
+
+### Docker compose
+```yml
+version: '3.3'
+services:
+  terraria-backup-docker:
+    image: passivelemon/terraria-backup-docker:latest
+    container_name: terraria-backup-docker
+    volumes:
+      - /opt/terrariaServer/Worlds/:/opt/terraria-backup/worlds/
+    environment:
+      METHOD: 'tar'
+      STARTTRIGGER: '1'
+```
