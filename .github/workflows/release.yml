@@ -1,4 +1,4 @@
-name: Image Publisher
+name: Release Publish
 
 on:
   release:
@@ -37,3 +37,4 @@ jobs:
             --tag ghcr.io/passivelemon/terraria-backup-docker:${{ github.event.release.tag_name }} \
             --tag ghcr.io/passivelemon/terraria-backup-docker:latest \
             .
+
