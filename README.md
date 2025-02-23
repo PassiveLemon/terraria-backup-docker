@@ -30,7 +30,7 @@ This will loop over all worldnames in the world directory and back up the world 
 
 ### Docker run </br>
 ```
-docker run -d --name (container name) -v (worlds directory):/opt/terraria-backup/config/ passivelemon/terraria-backup-docker:latest
+docker run -d --name <container name> -v <world dir>:/opt/terraria-backup/config/ passivelemon/terraria-backup-docker:latest
 ```
 
 ### Docker Compose
@@ -41,7 +41,7 @@ services:
     image: passivelemon/terraria-backup-docker:latest
     container_name: terraria-backup-docker
     volumes:
-      - (worlds directory):/opt/terraria-backup/worlds/
+      - <world dir>:/opt/terraria-backup/worlds/
 ```
 
 ## Examples </br>
@@ -63,3 +63,4 @@ services:
       METHOD: 'tar'
       STARTTRIGGER: '1'
 ```
+
