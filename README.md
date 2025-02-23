@@ -1,6 +1,6 @@
 # [terraria-backup-docker](https://github.com/PassiveLemon/terraria-backup-docker) </br>
 
-Side-car Docker container to backup [terraria-docker](https://github.com/PassiveLemon/terraria-docker) or [tmodloader1.4-docker](https://github.com/PassiveLemon/tmodloader1.4-docker).
+Side-car Docker container to backup [terraria-docker](https://github.com/PassiveLemon/terraria-docker).
 
 > [!WARNING]
 > This is container alone is NOT a substitute for a proper backup solution. If losing data would cause you trouble, please, take proper care of it.
