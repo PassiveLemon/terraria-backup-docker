@@ -4,13 +4,13 @@ function rotator () {
   WLD=$1 # World file
   CNT=$2 # Rotation count
   EXT=$3 # Backup file extension
-  # Delete all backups greater than or equal to the rotation count
+  # Delete the rotation count backup, ignore files larger than it
   for BACKUP in /opt/terraria-backup/worlds/Backup/"${WLD}".*"${EXT}"; do
     # Isolate the backup number
     BACKUPNUM=$(basename "$BACKUP")
     BACKUPNUM="${BACKUPNUM#"$WLD".}"
     BACKUPNUM="${BACKUPNUM%%.*}"
-    if ((BACKUPNUM >= CNT)); then
+    if ((BACKUPNUM == CNT)); then
       rm "/opt/terraria-backup/worlds/Backup/$WLD.${BACKUPNUM}${EXT}"
     fi
   done
@@ -24,6 +24,7 @@ function rotator () {
 
 # $1 = World file
 function cpcmd () {
+  mkdir "/opt/terraria-backup/worlds/Backup/$1.0"
   cp "/opt/terraria-backup/worlds/$1" "/opt/terraria-backup/worlds/Backup/$1.0"
 }
 
@@ -89,3 +90,4 @@ for FILE in /opt/terraria-backup/worlds/*.{wld,twld}; do
     echo "|| $WORLD backed up. ||"
   fi
 done
+
