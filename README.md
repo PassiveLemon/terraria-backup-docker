@@ -16,17 +16,19 @@ This will loop over all worldnames in the world directory and back up the world 
 ## Environment variables
 | Variable | Options | Default | Details |
 |:-|:-|:-|:-|
-`CRONTIME` | `crontime (* * * * *)` | `0 1 * * * (Every day at 1 AM)` | The cron time that the container follows for the backup schedule.
-`STARTTRIGGER` | `boolean` | `0` | Whether to run the backup upon container start.
-`METHOD` | `cp` `tar` `zip` `7zip` | `cp` | The method of storage to use when backing up. More details below.
-`ROTATIONS` | `integer` | `5` | How many backups to rotate through.
+| `PUID` | `integer` | `1000` | The UID to run the script with. |
+| `PGID` | `integer` | `1000` | The GID to run the script with. |
+| `CRONTIME` | `crontime (* * * * *)` | `0 1 * * * (Every day at 1 AM)` | The cron time that the container follows for the backup schedule. |
+| `STARTTRIGGER` | `boolean` | `0` | Whether to run the backup upon container start. |
+| `METHOD` | `cp` `tar` `zip` `7zip` | `cp` | The method of storage to use when backing up. More details below. |
+| `ROTATIONS` | `integer` | `5` | How many backups to rotate through. |
 
 | Method | Function |
 |:-|:-|
-`cp` | Copy to backup location. This is the default.
-`tar` | Archive (with gzip) to backup location.
-`zip` | Zip to backup location.
-`7zip` | 7Zip to backup location.
+| `cp` | Copy to backup location. This is the default. |
+| `tar` | Archive (with gzip) to backup location. |
+| `zip` | Zip to backup location. |
+| `7zip` | 7Zip to backup location. |
 
 ### Docker run </br>
 ```
@@ -35,7 +37,6 @@ docker run -d --name <container name> -v <world dir>:/opt/terraria-backup/config
 
 ### Docker Compose
 ```yml
-version: '3.3'
 services:
   terraria-backup-docker:
     image: passivelemon/terraria-backup-docker:latest
@@ -52,7 +53,6 @@ docker run -d --name terraria-backup-docker -v /opt/terrariaServer/Worlds/:/opt/
 
 ### Docker compose
 ```yml
-version: '3.3'
 services:
   terraria-backup-docker:
     image: passivelemon/terraria-backup-docker:latest

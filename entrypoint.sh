@@ -1,10 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
-echo "Terraria-Backup version: $VERSION"
+set -e
 
-if [ "$STARTTRIGGER" = "1" ]; then
-  /opt/terraria-backup/backup.sh
+# Create backup user for rootless operation
+if ! getent group backup > /dev/null 2>&1; then
+  addgroup -g "$PGID" backup
 fi
+if ! getent passwd backup > /dev/null 2>&1; then
+  adduser -u "$PUID" -G backup -s /bin/sh -D backup
+fi
+chown -R "$PUID:$PGID" /opt/terraria-backup
 
-(crontab -l 2>/dev/null; echo "${CRONTIME} /opt/terraria-backup/backup.sh") | crontab -
-crond -f
+exec su-exec "$PUID:$PGID" "/opt/terraria-backup/start.sh"
+
