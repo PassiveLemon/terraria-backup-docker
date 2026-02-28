@@ -6,14 +6,9 @@ RUN apk add --no-cache su-exec bash supercronic tar gzip zip 7zip
 
 RUN mkdir -p /opt/terraria-backup/worlds/
 
-COPY entrypoint.sh /opt/terraria-backup/
-COPY backup.sh /opt/terraria-backup/
-COPY start.sh /opt/terraria-backup/
-
-RUN chmod -R 755 /opt/terraria-backup/ &&\
-    chmod +x /opt/terraria-backup/entrypoint.sh &&\
-    chmod +x /opt/terraria-backup/backup.sh &&\
-    chmod +x /opt/terraria-backup/start.sh
+COPY --chmod=755 scripts/entrypoint.sh /opt/terraria-backup/
+COPY --chmod=755 scripts/backup.sh /opt/terraria-backup/
+COPY --chmod=755 scripts/start.sh /opt/terraria-backup/
 
 WORKDIR /opt/terraria-backup/
 
