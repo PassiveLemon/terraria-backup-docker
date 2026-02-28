@@ -1,13 +1,14 @@
 services:
   test-terraria-backup-docker:
-    pull_policy: build
-    build:
-      context: .
+    image: test-terraria-backup-docker
     container_name: test-terraria-backup-docker
     volumes:
       - ./test/:/opt/terraria-backup/worlds/
     environment:
-      METHOD: "tar"
+      TZ: "America/New_York"
+      PUID: "${PUID}"
+      PGID: "${PGID}"
+      METHOD: "7zip"
       STARTTRIGGER: "1"
       CRONTIME: "*/2 * * * *"
 
